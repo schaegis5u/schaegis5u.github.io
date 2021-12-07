@@ -32,370 +32,375 @@
       </div>
     </nav>
 
-    <h1 class="display-2">Cahier des charges fonctionnel</h1>
-
     <div class="container-sm">
-      <h1 class="display-5">Contexte & définition du projet</h1>
-      <p>
-        Depuis la crise sanitaire mondiale de la COVID-19, la population a commencé à prendre conscience des risques d’un environnement de mauvaise qualité pour sa santé, notamment dans les lieux publics et d’éducation, ce qui a amené à la création de ce projet, consistant en la mise en place de capteurs dans les différentes salles de l’IUT de Saint-Dié-des-Vosges. 
-        Ces capteurs permettront de récupérer de nombreuses mesures, ce qui permettra à l’IUT de vérifier que l’environnement de travail qu’est l’IUT est bien de qualité et qu’il respecte les préconisations des Centres de Santé au Travail (CST).
-        Il sera également possible d’effectuer des actions en fonction des mesures récupérées : 
-        allumage de LED et gestion du chauffage en fonction de l’occupation
-        ouverture des stores si la luminosité est trop faible
-        activation d’une alarme en cas de présence hors des horaires d’ouverture de l’IUT
-        Enfin, il serait possible de faire quelques économies, en coupant le chauffage s’il n’est pas nécessaire et en ne ventilant que si la température et le taux de CO2 l'exigent.
+      <h1 class="display-2 fw-bold">Cahier des charges fonctionnel</h1>
 
-      </p>
+      <div class="container-sm">
+        <h1 class="display-5">Contexte & définition du projet</h1>
+        <p>
+          Depuis la crise sanitaire mondiale de la COVID-19, la population a commencé à prendre conscience des risques d’un environnement de mauvaise qualité pour sa santé, notamment dans les lieux publics et d’éducation, ce qui a amené à la création de ce projet, consistant en la mise en place de capteurs dans les différentes salles de l’IUT de Saint-Dié-des-Vosges. 
+          Ces capteurs permettront de récupérer de nombreuses mesures, ce qui permettra à l’IUT de vérifier que l’environnement de travail qu’est l’IUT est bien de qualité et qu’il respecte les préconisations des Centres de Santé au Travail (CST).
+          Il sera également possible d’effectuer des actions en fonction des mesures récupérées : 
+          allumage de LED et gestion du chauffage en fonction de l’occupation
+          ouverture des stores si la luminosité est trop faible
+          activation d’une alarme en cas de présence hors des horaires d’ouverture de l’IUT
+          Enfin, il serait possible de faire quelques économies, en coupant le chauffage s’il n’est pas nécessaire et en ne ventilant que si la température et le taux de CO2 l'exigent.
+
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Description des fonctionnalités</h1>
+        <p>
+          L’ensemble des mesures et des indicateurs seront rassemblés sur une application web dédiée. Cette application devra permettre de lister clairement les différentes salles d’un bâtiment (dans ce cas, l’IUT de Saint-Dié-des-Vosges) et d’afficher, à l’aide d’un dashboard (ou tableau de bord), les mesures récoltées organisées de façon claire et compréhensible.
+          Également, elle devra être capable de récupérer en temps réel les différentes données envoyées par les capteurs et savoir à quelle salle appartiennent ces mesures pour les retranscrire correctement.
+          Si possible, l’application devra permettre de gérer certains appareils de domotique en fonction des mesures courantes de la salle ; La gestion du chauffage, de la ventilation ou de la lumière, dans notre cas ainsi que certains paramètres des capteurs.
+          Les préconisations concernant le confort thermique sont entre 20°C et 22°C ; concernant l’humidité la préconisation est à un taux de 50%. Pour le bruit, un niveau maximum de 50 dB est conseillé pour le confort. Lorsque les valeurs mesurées sont trop éloignées de celles-ci, l’application affichera qu’elles ne sont pas optimales et les appareils de domotique répondront de manière automatique pour améliorer le confort.
+          Des indicateurs et alertes pour smartphones sont à prévoir, afin d’être tenu au courant en permanence de ce qu’il se passe dans les salles tel que des dépassements du niveau de CO2 ou une intrusion.
+          Enfin, toutes les données seront stockées sur un serveur, un cloud, afin d’être accessibles de partout. 
+          Les différents capteurs seront connectés à un microcontrolleur, qui fournira ses données à l’aide du réseau LoRaWAN, permettant des échanges sur très longue distance.
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Expression et analyse des besoins et contraintes</h1>
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th class ="text-center">Besoins</th>
+              <th class ="text-center">Contraintes</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <td>Mesures de nombreux paramètres d’ambiances</td>
+            <td>Haute autonomie en fonctionnement</td>
+          </tbody>
+          <tbody class ="text-center">
+            <td>Paramètres des capteurs modifiables</td>
+            <td>Taille réduite, installable partout</td>
+          </tbody>
+          <tbody class ="text-center">
+            <td>Dashboard disposant de toutes les informations nécessaires</td>
+            <td>Mesures précises et fiables</td>
+          </tbody>
+          <tbody class ="text-center">
+            <td></td>
+            <td>Dashboard réactif et rapide à charger</td>
+          </tbody>
+          <tbody class ="text-center">
+            <td></td>
+            <td>Dashboard non surchargé</td>
+          </tbody>
+          <tbody class ="text-center">
+            <td></td>
+            <td>Fonctionnement sans intervention humaine</td>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Analyse de l’existant et étude concurrentielle</h1>
+        <p>
+          De nos jours, que ce soit dans des lieux publics ou privés, nous utilisons énormément de capteurs en tout genre ; les thermomètres, les alarmes à incendie (capteur de fumée), les caméras, les microphones, les capteurs de mouvements (lumières automatiques, etc…) ou encore les capteurs de luminosité sur nos smartphones, mais nous ne pouvons pas les utiliser pour ce projet, car il faudrait un appareil par mesure, ce qui serait trop imposant.
+          Il existe de nombreux appareils permettant de mesurer et afficher une ou deux mesures à la fois (les thermomètres peuvent afficher l’humidité, en plus de la température, généralement) mais peu voire aucun d’entre eux, disponible à l’achat facilement, ne peuvent récupérer 4, 5 ou même 6 mesures en même temps à moins de coûter très cher.
+          Les offres concurrentes, telle que l’entreprise IOT Factory, sont réservées aux professionnels et coûtent généralement très cher, bien que performantes et proposant presque tout ce dont nous avons besoin. Dans l’optique d’installer dans plusieurs salles de l’IUT et sans dépenser trop d’argent, réaliser notre propre système serait plus efficace.
+        </p>
+
+        <p> 
+          <b>Le capteur de chez EWATTCH est notre principal concurrent, car il propose presque toutes les mesures dont nous avons besoin. <br/> Son gros désavantage, cependant, est son prix, très élevé.</b>
+        </p>
+
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th colspan="2"><i>Capteur EWATTCH : Ambiance 4 en 1</i></th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Prix</th>
+            <td>156 € HT</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Température</th>
+            <td>De 5°C à 60°C</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Humidité</th>
+            <td>De 0 à 100%</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Présence</th>
+            <td>Distance de 5 mètres / angle 130°</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Luminosité</th>
+            <td>De 0 à 65535 Lux</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Alimentation</th>
+            <td>2 piles lithiums 2700 mAh (autonomie de 2 à 10 ans), alimentation externe optionnelle de 5VDC à 12VDC</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Dimensions du capteur</th>
+            <td>86 x 86 x 25.5 mm (H x L x P)</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Modes de fixation</th>
+            <td>Fixation murale</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Certifications</th>
+            <td>Homologation CE et norme RoHs</td>
+          </tbody>
+        </table>
+
+        <p> 
+          <b>Quelques offres concurrentes de capteurs étudiées afin de déterminer leurs forces et faiblesses :</b>
+        </p>
+
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th><i>Capteur de surveillance de l’ambiance intérieure IOT Factory</i></th>
+              <th class ="text-center">Forces (+) & Faiblesses (-)</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Mesurer la température</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer l’humidité</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer le bruit</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer le CO2</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer la luminosité</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer la présence</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Ajuster la température de manière automatique</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Indiquer les niveaux de qualité de chaque mesure</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Prix accessible</th>
+            <td>-</td>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th><i>Capteur d’ambiance Belimo</i></th>
+              <th class ="text-center">Forces (+) & Faiblesses (-)</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Mesurer la température</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer l’humidité</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer le bruit</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer le CO2</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer la luminosité</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer la présence</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Ajuster la température de manière automatique</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Indiquer les niveaux de qualité de chaque mesure</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Prix accessible</th>
+            <td>+</td>
+          </tbody>
+        </table>
+        
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th><i>Sonde ZigBee</i></th>
+              <th class ="text-center">Forces (+) & Faiblesses (-)</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Mesurer la température</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer l’humidité</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer le bruit</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer le CO2</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer la luminosité</th>
+            <td>+</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Mesurer la présence</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Ajuster la température de manière automatique</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Indiquer les niveaux de qualité de chaque mesure</th>
+            <td>-</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Prix accessible</th>
+            <td>+</td>
+          </tbody>
+        </table>
+
+        <p>
+          Comme nous avons pu le constater en étudiant les différents concurrents 
+          de notre projet, aucun produit existant disponible directement à la vente 
+          ne remplit toutes les conditions que nous souhaitons. Bien que certains, 
+          comme l’entreprise IOT Factory, proposent des produits très proches de ce que nous voulons, 
+          les prix sont très élevés et les produits sont très certainement difficilement modifiables, 
+          rendant impossible l’ajout des capteurs manquants.
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Objectifs du projet</h1>
+        <p>
+          L’objectif du projet, comme déjà cité précédemment, est de permettre de suivre en temps réel et continuellement la qualité de l’environnement des différentes salles de l’IUT. Cette qualité correspond à la luminosité, le niveau sonore, l’humidité, la température, le taux d’occupation de la salle, le taux de CO2 dans l’air et possiblement d'autres mesures dans le futur. Nous souhaitons réaliser une application, disponible partout, qui permettra de lire les données des salles et d’émettre des rappels ou alertes si besoin.
+          A terme, cela permettra d’améliorer drastiquement la qualité des salles et la santé de leurs occupants, un point d’autant plus important depuis la crise sanitaire de la COVID-19.
+          Si le projet est un succès, il pourrait être envisagé de l’installer dans d’autres bâtiments, d’autres structures, de l’Université de Lorraine.
+          Également, ce projet est un moyen efficace de découvrir plus en détail et mettre en place les différentes notions vues pendant les cours de la licence AMIO.
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Délais</h1>
+        <p>
+          Ce projet s'étend sur une durée de moins de 3 mois, avec des périodes de travail de 3 semaines à chaque fois.
+          Un projet fonctionnel et présentable devra être réalisé d'ici à la fin de cette periode.
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Budget</h1>
+        <p>
+          Concernant le budget du projet, il faudrait prendre en compte le prix de chaque capteurs utilisés (disponible sur la page dédiée), ce qui coûterait, au total,
+          entre 25 et 30€, en fonction des prix actuels. Cependant, tout le matériel nécessaire à la réalisation du projet nous sont fournis par le client. 
+          Ce faisant, le budget nécessaire à la réalisation de ce projet est nul.
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Périmètre du projet</h1>
+        <p>
+          Dans le cadre du projet, dans un premier temps, les tests seront effectués à l’IUT ou dans des pièces quelconque mais si le projet est efficace, il sera possible de les installer définitivement à l’IUT, dans des boîtes faites pour.
+          Il n’y a pas spécialement de lois à respecter, il nous faudra juste obtenir l’autorisation de l’IUT dans le cas où le projet est mis en place officiellement.
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Planning prévisionnel</h1>
+        <p>
+          Réaliser le cahier des charges (9 jours)<br/>
+          Rechercher des informations sur chaques capteurs (2 jours)<br/>
+          Réaliser des tableaux récapitulant les informations essentielles des capteurs (précision) (1 jour)<br/>
+          Etudier les différents capteurs et comprendre leur fonctionnement (4 jours)<br/>
+          Faire des tests des différents capteurs à l’aide de code pré-fourni (4 jours)<br/>
+          Faire des tests du LoRaWAN (2 jours)<br/>
+          Réaliser une application permettant de gérer les capteurs et le dashboard (15 jours)<br/>
+          Développement des codes pour les capteurs (20 jours)<br/>
+          Mise en place du projet dans un contexte réel pour effectuer des tests (2 jours)<br/>
+
+        </p>
+      </div>
+
+      <div class="container-sm">
+        <h1 class="display-5">Devis</h1>
+        <p>
+          Pour nos projets, nos services de développement sont facturés à hauteur de 20€ de l'heure. Au cours de ce projet, nous allons travailler à 2 pour une durée de 59 jours répartis sur 3 mois. <br/>
+          En partant du principe qu'une journée de travail constitue 5h de travail : 59 * 5 = 295h. Nous allons donc travailler 295h chacun sur ce projet.</br/>
+          Ainsi, nous nous retrouvons avec : 295 * 20€ = 5900€ pour une personne, soit 11800€ au total.
+        </p>
+
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th colspan="4">DEVIS</th>
+              <th class ="text-center">Total (€, TTC 20%)</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <td>Développeur</td>
+            <td>Temps (heure)</th>
+            <td>Prix (€)</td>
+            <th>Total (€, H.T.)</th>
+            <td></td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Aurélien</th>
+            <td>295</th>
+            <td>295 * 20</td>
+            <td>5900</td>
+            <td></td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Jade</th>
+            <td>295</th>
+            <td>295 * 20</td>
+            <td>5900</td>
+            <td></td>
+          </tbody>
+          <tbody class ="text-center">
+            <th colspan="3"></th>
+            <td>11800</th>
+            <td>14160</td>
+          </tbody>
+        </table>
+
+      </div>
+
     </div>
 
-    <div class="container-sm">
-      <h1 class="display-5">Description des fonctionnalités</h1>
-      <p>
-        L’ensemble des mesures et des indicateurs seront rassemblés sur une application web dédiée. Cette application devra permettre de lister clairement les différentes salles d’un bâtiment (dans ce cas, l’IUT de Saint-Dié-des-Vosges) et d’afficher, à l’aide d’un dashboard (ou tableau de bord), les mesures récoltées organisées de façon claire et compréhensible.
-        Également, elle devra être capable de récupérer en temps réel les différentes données envoyées par les capteurs et savoir à quelle salle appartiennent ces mesures pour les retranscrire correctement.
-        Si possible, l’application devra permettre de gérer certains appareils de domotique en fonction des mesures courantes de la salle ; La gestion du chauffage, de la ventilation ou de la lumière, dans notre cas ainsi que certains paramètres des capteurs.
-        Les préconisations concernant le confort thermique sont entre 20°C et 22°C ; concernant l’humidité la préconisation est à un taux de 50%. Pour le bruit, un niveau maximum de 50 dB est conseillé pour le confort. Lorsque les valeurs mesurées sont trop éloignées de celles-ci, l’application affichera qu’elles ne sont pas optimales et les appareils de domotique répondront de manière automatique pour améliorer le confort.
-        Des indicateurs et alertes pour smartphones sont à prévoir, afin d’être tenu au courant en permanence de ce qu’il se passe dans les salles tel que des dépassements du niveau de CO2 ou une intrusion.
-        Enfin, toutes les données seront stockées sur un serveur, un cloud, afin d’être accessibles de partout. 
-        Les différents capteurs seront connectés à un microcontrolleur, qui fournira ses données à l’aide du réseau LoRaWAN, permettant des échanges sur très longue distance.
-      </p>
-    </div>
 
-    <div class="container-sm">
-      <h1 class="display-5">Expression et analyse des besoins et contraintes</h1>
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th class ="text-center">Besoins</th>
-            <th class ="text-center">Contraintes</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <td>Mesures de nombreux paramètres d’ambiances</td>
-          <td>Haute autonomie en fonctionnement</td>
-        </tbody>
-        <tbody class ="text-center">
-          <td>Paramètres des capteurs modifiables</td>
-          <td>Taille réduite, installable partout</td>
-        </tbody>
-        <tbody class ="text-center">
-          <td>Dashboard disposant de toutes les informations nécessaires</td>
-          <td>Mesures précises et fiables</td>
-        </tbody>
-        <tbody class ="text-center">
-          <td></td>
-          <td>Dashboard réactif et rapide à charger</td>
-        </tbody>
-        <tbody class ="text-center">
-          <td></td>
-          <td>Dashboard non surchargé</td>
-        </tbody>
-        <tbody class ="text-center">
-          <td></td>
-          <td>Fonctionnement sans intervention humaine</td>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Analyse de l’existant et étude concurrentielle</h1>
-      <p>
-        De nos jours, que ce soit dans des lieux publics ou privés, nous utilisons énormément de capteurs en tout genre ; les thermomètres, les alarmes à incendie (capteur de fumée), les caméras, les microphones, les capteurs de mouvements (lumières automatiques, etc…) ou encore les capteurs de luminosité sur nos smartphones, mais nous ne pouvons pas les utiliser pour ce projet, car il faudrait un appareil par mesure, ce qui serait trop imposant.
-        Il existe de nombreux appareils permettant de mesurer et afficher une ou deux mesures à la fois (les thermomètres peuvent afficher l’humidité, en plus de la température, généralement) mais peu voire aucun d’entre eux, disponible à l’achat facilement, ne peuvent récupérer 4, 5 ou même 6 mesures en même temps à moins de coûter très cher.
-        Les offres concurrentes, telle que l’entreprise IOT Factory, sont réservées aux professionnels et coûtent généralement très cher, bien que performantes et proposant presque tout ce dont nous avons besoin. Dans l’optique d’installer dans plusieurs salles de l’IUT et sans dépenser trop d’argent, réaliser notre propre système serait plus efficace.
-      </p>
-
-      <p> 
-        <b>Le capteur de chez EWATTCH est notre principal concurrent, car il propose presque toutes les mesures dont nous avons besoin. <br/> Son gros désavantage, cependant, est son prix, très élevé.</b>
-      </p>
-
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th colspan="2"><i>Capteur EWATTCH : Ambiance 4 en 1</i></th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Prix</th>
-          <td>156 € HT</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Température</th>
-          <td>De 5°C à 60°C</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Humidité</th>
-          <td>De 0 à 100%</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Présence</th>
-          <td>Distance de 5 mètres / angle 130°</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Luminosité</th>
-          <td>De 0 à 65535 Lux</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Alimentation</th>
-          <td>2 piles lithiums 2700 mAh (autonomie de 2 à 10 ans), alimentation externe optionnelle de 5VDC à 12VDC</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Dimensions du capteur</th>
-          <td>86 x 86 x 25.5 mm (H x L x P)</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Modes de fixation</th>
-          <td>Fixation murale</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Certifications</th>
-          <td>Homologation CE et norme RoHs</td>
-        </tbody>
-      </table>
-
-      <p> 
-        <b>Quelques offres concurrentes de capteurs étudiées afin de déterminer leurs forces et faiblesses :</b>
-      </p>
-
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th><i>Capteur de surveillance de l’ambiance intérieure IOT Factory</i></th>
-            <th class ="text-center">Forces (+) & Faiblesses (-)</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Mesurer la température</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer l’humidité</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer le bruit</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer le CO2</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer la luminosité</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer la présence</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Ajuster la température de manière automatique</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Indiquer les niveaux de qualité de chaque mesure</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Prix accessible</th>
-          <td>-</td>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th><i>Capteur d’ambiance Belimo</i></th>
-            <th class ="text-center">Forces (+) & Faiblesses (-)</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Mesurer la température</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer l’humidité</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer le bruit</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer le CO2</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer la luminosité</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer la présence</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Ajuster la température de manière automatique</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Indiquer les niveaux de qualité de chaque mesure</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Prix accessible</th>
-          <td>+</td>
-        </tbody>
-      </table>
-      
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th><i>Sonde ZigBee</i></th>
-            <th class ="text-center">Forces (+) & Faiblesses (-)</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Mesurer la température</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer l’humidité</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer le bruit</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer le CO2</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer la luminosité</th>
-          <td>+</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Mesurer la présence</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Ajuster la température de manière automatique</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Indiquer les niveaux de qualité de chaque mesure</th>
-          <td>-</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Prix accessible</th>
-          <td>+</td>
-        </tbody>
-      </table>
-
-      <p>
-        Comme nous avons pu le constater en étudiant les différents concurrents 
-        de notre projet, aucun produit existant disponible directement à la vente 
-        ne remplit toutes les conditions que nous souhaitons. Bien que certains, 
-        comme l’entreprise IOT Factory, proposent des produits très proches de ce que nous voulons, 
-        les prix sont très élevés et les produits sont très certainement difficilement modifiables, 
-        rendant impossible l’ajout des capteurs manquants.
-      </p>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Objectifs du projet</h1>
-      <p>
-        L’objectif du projet, comme déjà cité précédemment, est de permettre de suivre en temps réel et continuellement la qualité de l’environnement des différentes salles de l’IUT. Cette qualité correspond à la luminosité, le niveau sonore, l’humidité, la température, le taux d’occupation de la salle, le taux de CO2 dans l’air et possiblement d'autres mesures dans le futur. Nous souhaitons réaliser une application, disponible partout, qui permettra de lire les données des salles et d’émettre des rappels ou alertes si besoin.
-        A terme, cela permettra d’améliorer drastiquement la qualité des salles et la santé de leurs occupants, un point d’autant plus important depuis la crise sanitaire de la COVID-19.
-        Si le projet est un succès, il pourrait être envisagé de l’installer dans d’autres bâtiments, d’autres structures, de l’Université de Lorraine.
-        Également, ce projet est un moyen efficace de découvrir plus en détail et mettre en place les différentes notions vues pendant les cours de la licence AMIO.
-      </p>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Délais</h1>
-      <p>
-        Ce projet s'étend sur une durée de moins de 3 mois, avec des périodes de travail de 3 semaines à chaque fois.
-        Un projet fonctionnel et présentable devra être réalisé d'ici à la fin de cette periode.
-      </p>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Budget</h1>
-      <p>
-        Concernant le budget du projet, il faudrait prendre en compte le prix de chaque capteurs utilisés (disponible sur la page dédiée), ce qui coûterait, au total,
-        entre 25 et 30€, en fonction des prix actuels. Cependant, tout le matériel nécessaire à la réalisation du projet nous sont fournis par le client. 
-        Ce faisant, le budget nécessaire à la réalisation de ce projet est nul.
-      </p>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Périmètre du projet</h1>
-      <p>
-        Dans le cadre du projet, dans un premier temps, les tests seront effectués à l’IUT ou dans des pièces quelconque mais si le projet est efficace, il sera possible de les installer définitivement à l’IUT, dans des boîtes faites pour.
-        Il n’y a pas spécialement de lois à respecter, il nous faudra juste obtenir l’autorisation de l’IUT dans le cas où le projet est mis en place officiellement.
-      </p>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Planning prévisionnel</h1>
-      <p>
-        Réaliser le cahier des charges (9 jours)<br/>
-        Rechercher des informations sur chaques capteurs (2 jours)<br/>
-        Réaliser des tableaux récapitulant les informations essentielles des capteurs (précision) (1 jour)<br/>
-        Etudier les différents capteurs et comprendre leur fonctionnement (4 jours)<br/>
-        Faire des tests des différents capteurs à l’aide de code pré-fourni (4 jours)<br/>
-        Faire des tests du LoRaWAN (2 jours)<br/>
-        Réaliser une application permettant de gérer les capteurs et le dashboard (15 jours)<br/>
-        Développement des codes pour les capteurs (20 jours)<br/>
-        Mise en place du projet dans un contexte réel pour effectuer des tests (2 jours)<br/>
-
-      </p>
-    </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Devis</h1>
-      <p>
-        Pour nos projets, nos services de développement sont facturés à hauteur de 20€ de l'heure. Au cours de ce projet, nous allons travailler à 2 pour une durée de 59 jours répartis sur 3 mois. <br/>
-        En partant du principe qu'une journée de travail constitue 5h de travail : 59 * 5 = 295h. Nous allons donc travailler 295h chacun sur ce projet.</br/>
-        Ainsi, nous nous retrouvons avec : 295 * 20€ = 5900€ pour une personne, soit 11800€ au total.
-      </p>
-
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th colspan="4">DEVIS</th>
-            <th class ="text-center">Total (€, TTC 20%)</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <td>Développeur</td>
-          <td>Temps (heure)</th>
-          <td>Prix (€)</td>
-          <th>Total (€, H.T.)</th>
-          <td></td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Aurélien</th>
-          <td>295</th>
-          <td>295 * 20</td>
-          <td>5900</td>
-          <td></td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Jade</th>
-          <td>295</th>
-          <td>295 * 20</td>
-          <td>5900</td>
-          <td></td>
-        </tbody>
-        <tbody class ="text-center">
-          <th colspan="3"></th>
-          <td>11800</th>
-          <td>14160</td>
-        </tbody>
-      </table>
-
-    </div>
   </body>
 </html>
