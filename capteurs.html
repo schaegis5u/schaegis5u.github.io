@@ -32,81 +32,228 @@
       </div>
     </nav>
 
-    <h1 class="display-2">Capteurs choisis</h1>
-
     <div class="container-sm">
-      <h1 class="display-5">Le Module CJMCU 8128</h1>
-      <p>
-        Module composé de 3 capteurs d'un prix total d'environ 20€.
-      </p>
+      <h1 class="display-2 fw-bold">Capteurs choisis</h1>
 
+      <!-- CJMCU 8128 -->
       <div class="container-sm">
-        <h2 class="display-6">Le capteur CCS811</h2>
+        <h2 class="display-5">Le Module CJMCU 8128</h2>
         <p>
-          Il détecte la présence de COV (composés organiques volatils), en déduit le TVOC (niveau de composés organiques volatils totaux) et donne le taux d’eCO2 (équivalent CO2).
+          Module composé de 3 capteurs d'un prix total d'environ 20€.
         </p>
 
-        <table class="table table-bordered table-info">
-          <thead>
-            <tr>
-              <th>Mesure</th>
-              <th>Plage</th>
-            </tr>
-          </thead>
-          <tbody class ="text-center">
-            <th>TVOC (niveau de composés organiques volatils totaux)</th>
-            <td>De 0ppb à 64000ppb</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Taux d’eCO2 (équivalent CO2)</th>
-            <td>De 400ppm à 64000ppm</td>
-          </tbody>
-        </table>
+        <div class="m-3">
+          <img class="img-responsive" style="max-height: 250px;" src="./images/CJMCU8128.jpg" alt="capteur CJMCU 8128"> 
+          <img class="img-responsive" style="max-height: 250px;" src="./images/CJMCU8128-pinout.png" alt="pinout du capteur CJMCU 8128"> 
+        </div>
 
-        <table class="table table-bordered table-light">
-          <thead>
-            <tr>
-              <th colspan="2">Autres spécificités</th>
-            </tr>
-          </thead>
-          <tbody class ="text-center">
-            <th>Tension d’alimentation</th>
-            <td>De 1.8V à 3.6V</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Courant consommé</th>
-            <td>30mA (pic à 54mA)</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Puissance consommée</th>
-            <td>60mW</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Plage de température de fonctionnement</th>
-            <td>De -40°C à +85°C</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Plage d’humidité de fonctionnement</th>
-            <td>De 10% à 95%</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Durée de vie du capteur</th>
-            <td>> 5 ans</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Fréquence du bus I2C</th>
-            <td>De 10 à 400kHz</td>
-          </tbody>
-        </table>
-      </div> 
+        <!-- CJMCU 8128 -> CCS811 -->
+        <div class="container-sm">
+          <h3 class="display-6 fst-italic">Le capteur CCS811</h3>
+          <p>
+            Il détecte la présence de COV (composés organiques volatils), en déduit le TVOC (niveau de composés organiques volatils totaux) et donne le taux d’eCO2 (équivalent CO2).
+          </p>
+          
+          <a href="https://www.sciosense.com/wp-content/uploads/2020/01/SC-001232-DS-2-CCS811B-Datasheet-Revision-2.pdf">Datasheet</a>
+
+          <table class="table table-bordered table-info mt-3">
+            <thead>
+              <tr>
+                <th>Mesure</th>
+                <th>Plage</th>
+              </tr>
+            </thead>
+            <tbody class ="text-center">
+              <th>TVOC (niveau de composés organiques volatils totaux)</th>
+              <td>De 0ppb à 64000ppb</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Taux d’eCO2 (équivalent CO2)</th>
+              <td>De 400ppm à 64000ppm</td>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered table-light">
+            <thead>
+              <tr>
+                <th colspan="2">Autres spécificités</th>
+              </tr>
+            </thead>
+            <tbody class ="text-center">
+              <th>Tension d’alimentation</th>
+              <td>De 1.8V à 3.6V</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Courant consommé</th>
+              <td>30mA (pic à 54mA)</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Puissance consommée</th>
+              <td>60mW</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage de température de fonctionnement</th>
+              <td>De -40°C à +85°C</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage d’humidité de fonctionnement</th>
+              <td>De 10% à 95%</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Durée de vie du capteur</th>
+              <td>> 5 ans</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Fréquence du bus I2C</th>
+              <td>De 10 à 400kHz</td>
+            </tbody>
+          </table>
+        </div> 
+          
+        <!-- CJMCU 8128 -> SI7021 -->
+        <div class="container-sm">
+          <h3 class="display-6 fst-italic">Le capteur SI7021</h3>
+          <p>
+            Il mesure la température et l’humidité.
+          </p>
+          
+          <a href="https://www.silabs.com/documents/public/data-sheets/Si7021-A20.pdf">Datasheet</a>
+
+          <table class="table table-bordered table-info mt-3">
+            <thead>
+              <tr>
+                <th>Mesure</th>
+                <th>Plage</th>
+                <th>Précision</th>
+              </tr>
+            </thead>
+            <tbody class ="text-center">
+              <th>Température</th>
+              <td>De -10°C à + 85°C</td>
+              <td>± 0.4 ° C</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Humidité</th>
+              <td>De 0% à 100%</td>
+              <td>± 3% jusqu’à 80%</td>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered table-light">
+            <thead>
+              <tr>
+                <th colspan="2">Autres spécificités</th>
+              </tr>
+            </thead>
+            <tbody class ="text-center">
+              <th>Tension d’alimentation</th>
+              <td>De 1.9V à 3.6V</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Courant consommé</th>
+              <td>150μA / 60nA en veille</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage de température de fonctionnement</th>
+              <td>De –40°C à +125°C</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage d’humidité de fonctionnement</th>
+              <td>De 0% à 100%</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Durée de vie du capteur</th>
+              <td>> 8 ans</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Fréquence du bus I2C</th>
+              <td>Jusqu’à 400kHz</td>
+            </tbody>
+          </table>
+        </div> 
         
+        <!-- CJMCU 8128 -> BMP280 -->
+        <div class="container-sm">
+          <h3 class="display-6 fst-italic">Le capteur BMP280</h3>
+          <p>
+            Il mesure la température et la pression barométrique.
+          </p>
+
+          <a href="https://cdn-shop.adafruit.com/datasheets/BST-BMP280-DS001-11.pdf">Datasheet</a>
+
+          <table class="table table-bordered table-info mt-3">
+            <thead>
+              <tr>
+                <th>Mesure</th>
+                <th>Plage</th>
+                <th>Précision</th>
+              </tr>
+            </thead>
+            <tbody class ="text-center">
+              <th>Température</th>
+              <td>De -40°C à + 85°C</td>
+              <td>± 1.0°C</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Pression barométrique</th>
+              <td>De 300 à 1100 hPa</td>
+              <td>± 1 hPa</td>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered table-light">
+            <thead>
+              <tr>
+                <th colspan="2">Autres spécificités</th>
+              </tr>
+            </thead>
+            <tbody class ="text-center">
+              <th>Tension d’alimentation</th>
+              <td>De 1.2V à 3.6V </td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Courant consommé</th>
+              <td>~2.8µA (pic à 720µA pendant la mesure de pression) et ~325µA pendant la mesure de température
+                </td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage de température de fonctionnement</th>
+              <td>De -40°C à +85°C</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage de pression de fonctionnement</th>
+              <td>De 300 hPa à 1100 hPa</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Plage d’humidité de fonctionnement</th>
+              <td>De 0% à 100%</td>
+            </tbody>
+            <tbody class ="text-center">
+              <th>Fréquence du bus I2C</th>
+              <td>Jusqu’à 3.4MHz</td>
+            </tbody>
+          </table>
+        </div> 
+
+      </div>
+      <!-- /CJMCU 8128 -->
+
+      <!-- BH1750 -->
       <div class="container-sm">
-        <h2 class="display-6">Le capteur SI7021</h2>
+        <h2 class="display-5">Le capteur BH1750</h2>
+
         <p>
-          Il mesure la température et l’humidité.
+          Il mesure la luminosité et a un prix d'environ 3€.
         </p>
 
-        <table class="table table-bordered table-info">
+        <div class="m-3">
+          <img class="img-responsive" style="max-height: 250px;" src="./images/BH1750.jpg" alt="capteur BH 1750"> 
+          <img class="img-responsive" style="max-height: 250px;" src="./images/BH1750-pinout.png" alt="pinout ducapteur BH 1750"> 
+        </div>
+        
+        <a href="https://components101.com/sites/default/files/component_datasheet/BH1750.pdf">Datasheet</a>
+
+        <table class="table table-bordered table-info mt-3">
           <thead>
             <tr>
               <th>Mesure</th>
@@ -115,14 +262,9 @@
             </tr>
           </thead>
           <tbody class ="text-center">
-            <th>Température</th>
-            <td>De -10°C à + 85°C</td>
-            <td>± 0.4 ° C</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Humidité</th>
-            <td>De 0% à 100%</td>
-            <td>± 3% jusqu’à 80%</td>
+            <th>Luminosité</th>
+            <td>De 1 Lx à 65535 Lx</td>
+            <td>Plusieurs choix : 0.5 Lx, 1 Lx ou 4 Lx</td>
           </tbody>
         </table>
 
@@ -134,188 +276,122 @@
           </thead>
           <tbody class ="text-center">
             <th>Tension d’alimentation</th>
-            <td>De 1.9V à 3.6V</td>
+            <td>De 2.4V à 3.6V</td>
           </tbody>
           <tbody class ="text-center">
             <th>Courant consommé</th>
-            <td>150μA / 60nA en veille</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Plage de température de fonctionnement</th>
-            <td>De –40°C à +125°C</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Plage d’humidité de fonctionnement</th>
-            <td>De 0% à 100%</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Durée de vie du capteur</th>
-            <td>> 8 ans</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Fréquence du bus I2C</th>
-            <td>Jusqu’à 400kHz</td>
-          </tbody>
-        </table>
-      </div> 
-      
-      <div class="container-sm">
-        <h2 class="display-6">Le capteur BMP280</h2>
-        <p>
-          Il mesure la température et la pression barométrique.
-        </p>
-
-        <table class="table table-bordered table-info">
-          <thead>
-            <tr>
-              <th>Mesure</th>
-              <th>Plage</th>
-              <th>Précision</th>
-            </tr>
-          </thead>
-          <tbody class ="text-center">
-            <th>Température</th>
-            <td>De -40°C à + 85°C</td>
-            <td>± 1.0°C</td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Pression barométrique</th>
-            <td>De 300 à 1100 hPa</td>
-            <td>± 1 hPa</td>
-          </tbody>
-        </table>
-
-        <table class="table table-bordered table-light">
-          <thead>
-            <tr>
-              <th colspan="2">Autres spécificités</th>
-            </tr>
-          </thead>
-          <tbody class ="text-center">
-            <th>Tension d’alimentation</th>
-            <td>De 1.2V à 3.6V </td>
-          </tbody>
-          <tbody class ="text-center">
-            <th>Courant consommé</th>
-            <td>~2.8µA (pic à 720µA pendant la mesure de pression) et ~325µA pendant la mesure de température
-              </td>
+            <td>120µA (max 190 μA)</td>
           </tbody>
           <tbody class ="text-center">
             <th>Plage de température de fonctionnement</th>
             <td>De -40°C à +85°C</td>
           </tbody>
           <tbody class ="text-center">
-            <th>Plage de pression de fonctionnement</th>
-            <td>De 300 hPa à 1100 hPa</td>
-          </tbody>
-          <tbody class ="text-center">
             <th>Plage d’humidité de fonctionnement</th>
-            <td>De 0% à 100%</td>
+            <td>De 0% à 85%</td>
           </tbody>
           <tbody class ="text-center">
             <th>Fréquence du bus I2C</th>
-            <td>Jusqu’à 3.4MHz</td>
+            <td>400KHz</td>
           </tbody>
         </table>
+
       </div> 
+      <!-- /BH1750 -->
+
+      <!-- AM312 -->
+      <div class="container-sm">
+        <h2 class="display-5">Le capteur AM312</h2>
+
+        <p>
+          Il détecte le mouvement et a un prix d'environ 2€.
+        </p>
+
+        <div class="m-3">
+          <img class="img-responsive" style="max-height: 250px;" src="./images/AM312.png" alt="capteur AM 312"> 
+          <img class="img-responsive" style="max-height: 250px;" src="./images/AM312-pinout.jpg" alt="pinout du capteur AM 312"> 
+        </div>
+        
+        <a href="https://robojax.com/products/files/robojax_am312_pir_motion_sensor_datasheet.pdf">Datasheet</a>
+
+        <table class="table table-bordered table-info mt-3">
+          <thead>
+            <tr>
+              <th>Mesure</th>
+              <th>Portée</th>
+              <th>Angle</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Mouvement</th>
+            <td>Jusqu’à 3 - 5 m</td>
+            <td>< 100°</td>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th colspan="2">Autres spécificités</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Tension d’alimentation</th>
+            <td>De 2.4V à 3.6V</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Courant consommé</th>
+            <td>De 12 μA  à 20 μA </td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Plage de température de fonctionnement</th>
+            <td>De -20°C à +85°C</td>
+          </tbody>
+        </table>
+
+      </div> 
+      <!-- /AM312 -->
+
+
+      <!-- MAX4466 -->
+      <div class="container-sm">
+        <h2 class="display-5">Le capteur MAX4466</h2>
+
+        <p>
+          Il détecte le son et a un prix d'environ 1€.
+        </p>
+
+        <div class="m-3">
+          <img class="img-responsive" style="max-height: 250px;" src="./images/MAX4466.png" alt="capteur MAX 4466"> 
+          <img class="img-responsive" style="max-height: 250px;" src="./images/MAX4466-pinout.png" alt="pinout du capteur MAX 4466"> 
+        </div>
+        
+        <a href="https://datasheets.maximintegrated.com/en/ds/MAX4465-MAX4469.pdf">Datasheet</a>
+
+        <table class="table table-bordered table-light mt-3">
+          <thead>
+            <tr>
+              <th colspan="2">Spécificités</th>
+            </tr>
+          </thead>
+          <tbody class ="text-center">
+            <th>Tension d’alimentation</th>
+            <td>De 2.4 V à 5.5 V</td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Courant consommé</th>
+            <td>24 µA (maximum 48 µA) </td>
+          </tbody>
+          <tbody class ="text-center">
+            <th>Plage de température de fonctionnement</th>
+            <td>De -40°C à +85°C</td>
+          </tbody>
+        </table>
+
+      </div> 
+      <!-- /AM312 -->
 
     </div>
-
-    <div class="container-sm">
-      <h1 class="display-5">Le capteur BH1750</h1>
-
-      <p>
-        Il mesure la luminosité et a un prix d'environ 3€.
-      </p>
-
-      <table class="table table-bordered table-info">
-        <thead>
-          <tr>
-            <th>Mesure</th>
-            <th>Plage</th>
-            <th>Précision</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Luminosité</th>
-          <td>De 1 Lx à 65535 Lx</td>
-          <td>Plusieurs choix : 0.5 Lx, 1 Lx ou 4 Lx</td>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th colspan="2">Autres spécificités</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Tension d’alimentation</th>
-          <td>De 2.4V à 3.6V</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Courant consommé</th>
-          <td>120µA (max 190 μA)</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Plage de température de fonctionnement</th>
-          <td>De -40°C à +85°C</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Plage d’humidité de fonctionnement</th>
-          <td>De 0% à 85%</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Fréquence du bus I2C</th>
-          <td>400KHz</td>
-        </tbody>
-      </table>
-
-    </div> 
-
-    <div class="container-sm">
-      <h1 class="display-5">Le capteur AM312</h1>
-
-      <p>
-        Il détecte le mouvement et a un prix d'environ 2€.
-      </p>
-
-      <table class="table table-bordered table-info">
-        <thead>
-          <tr>
-            <th>Mesure</th>
-            <th>Portée</th>
-            <th>Angle</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Mouvement</th>
-          <td>Jusqu’à 3 - 5 m</td>
-          <td>< 100°</td>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-light">
-        <thead>
-          <tr>
-            <th colspan="2">Autres spécificités</th>
-          </tr>
-        </thead>
-        <tbody class ="text-center">
-          <th>Tension d’alimentation</th>
-          <td>De 2.4V à 3.6V</td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Courant consommé</th>
-          <td>De 12 μA  à 20 μA </td>
-        </tbody>
-        <tbody class ="text-center">
-          <th>Plage de température de fonctionnement</th>
-          <td>De -20°C à +85°C</td>
-        </tbody>
-      </table>
-
-    </div> 
 
   </body>
 </html>
