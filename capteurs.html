@@ -10,10 +10,19 @@
 
     <title>Sujet 5 : Ambiance</title>
   </head>
-  <body>
+  <body class="dark-mode">
+    <style>
+      .dark-mode {
+        background-color: rgb(24, 26, 27);
+        color: rgb(177, 176, 176);
+      }
+      .dark-text {
+        color: rgb(177, 176, 176);
+      }
+      </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Menu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,8 +52,8 @@
         </p>
 
         <div class="m-3">
-          <img class="img-responsive" style="max-height: 250px;" src="./images/CJMCU8128.jpg" alt="capteur CJMCU 8128"> 
-          <img class="img-responsive" style="max-height: 250px;" src="./images/CJMCU8128-pinout.png" alt="pinout du capteur CJMCU 8128"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/CJMCU8128.jpg" alt="capteur CJMCU 8128"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/CJMCU8128-pinout.PNG" alt="pinout du capteur CJMCU 8128"> 
         </div>
 
         <!-- CJMCU 8128 -> CCS811 -->
@@ -56,7 +65,7 @@
           
           <a href="https://www.sciosense.com/wp-content/uploads/2020/01/SC-001232-DS-2-CCS811B-Datasheet-Revision-2.pdf">Datasheet</a>
 
-          <table class="table table-bordered table-info mt-3">
+          <table class="table table-bordered table-primary mt-3">
             <thead>
               <tr>
                 <th>Mesure</th>
@@ -73,7 +82,7 @@
             </tbody>
           </table>
 
-          <table class="table table-bordered table-light">
+          <table class="table table-bordered table-dark dark-text">
             <thead>
               <tr>
                 <th colspan="2">Autres spécificités</th>
@@ -119,7 +128,7 @@
           
           <a href="https://www.silabs.com/documents/public/data-sheets/Si7021-A20.pdf">Datasheet</a>
 
-          <table class="table table-bordered table-info mt-3">
+          <table class="table table-bordered table-primary mt-3">
             <thead>
               <tr>
                 <th>Mesure</th>
@@ -139,7 +148,7 @@
             </tbody>
           </table>
 
-          <table class="table table-bordered table-light">
+          <table class="table table-bordered table-dark dark-text">
             <thead>
               <tr>
                 <th colspan="2">Autres spécificités</th>
@@ -181,7 +190,7 @@
 
           <a href="https://cdn-shop.adafruit.com/datasheets/BST-BMP280-DS001-11.pdf">Datasheet</a>
 
-          <table class="table table-bordered table-info mt-3">
+          <table class="table table-bordered table-primary mt-3">
             <thead>
               <tr>
                 <th>Mesure</th>
@@ -201,7 +210,7 @@
             </tbody>
           </table>
 
-          <table class="table table-bordered table-light">
+          <table class="table table-bordered table-dark dark-text">
             <thead>
               <tr>
                 <th colspan="2">Autres spécificités</th>
@@ -247,13 +256,13 @@
         </p>
 
         <div class="m-3">
-          <img class="img-responsive" style="max-height: 250px;" src="./images/BH1750.jpg" alt="capteur BH 1750"> 
-          <img class="img-responsive" style="max-height: 250px;" src="./images/BH1750-pinout.png" alt="pinout ducapteur BH 1750"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/BH1750.jpg" alt="capteur BH 1750"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/BH1750-pinout.png" alt="pinout ducapteur BH 1750"> 
         </div>
         
         <a href="https://components101.com/sites/default/files/component_datasheet/BH1750.pdf">Datasheet</a>
 
-        <table class="table table-bordered table-info mt-3">
+        <table class="table table-bordered table-primary mt-3">
           <thead>
             <tr>
               <th>Mesure</th>
@@ -268,7 +277,7 @@
           </tbody>
         </table>
 
-        <table class="table table-bordered table-light">
+        <table class="table table-bordered table-dark dark-text">
           <thead>
             <tr>
               <th colspan="2">Autres spécificités</th>
@@ -308,13 +317,13 @@
         </p>
 
         <div class="m-3">
-          <img class="img-responsive" style="max-height: 250px;" src="./images/AM312.png" alt="capteur AM 312"> 
-          <img class="img-responsive" style="max-height: 250px;" src="./images/AM312-pinout.jpg" alt="pinout du capteur AM 312"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/AM312.PNG" alt="capteur AM 312"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/AM312-pinout.jpg" alt="pinout du capteur AM 312"> 
         </div>
         
         <a href="https://robojax.com/products/files/robojax_am312_pir_motion_sensor_datasheet.pdf">Datasheet</a>
 
-        <table class="table table-bordered table-info mt-3">
+        <table class="table table-bordered table-primary mt-3">
           <thead>
             <tr>
               <th>Mesure</th>
@@ -329,7 +338,7 @@
           </tbody>
         </table>
 
-        <table class="table table-bordered table-light">
+        <table class="table table-bordered table-dark dark-text">
           <thead>
             <tr>
               <th colspan="2">Autres spécificités</th>
@@ -362,13 +371,13 @@
         </p>
 
         <div class="m-3">
-          <img class="img-responsive" style="max-height: 250px;" src="./images/MAX4466.png" alt="capteur MAX 4466"> 
-          <img class="img-responsive" style="max-height: 250px;" src="./images/MAX4466-pinout.png" alt="pinout du capteur MAX 4466"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/MAX4466.PNG" alt="capteur MAX 4466"> 
+          <img class="img-responsive mw-100 img-thumbnail" style="max-height: 250px;" src="./images/MAX4466-pinout.PNG" alt="pinout du capteur MAX 4466"> 
         </div>
         
         <a href="https://datasheets.maximintegrated.com/en/ds/MAX4465-MAX4469.pdf">Datasheet</a>
 
-        <table class="table table-bordered table-light mt-3">
+        <table class="table table-bordered table-dark dark-text mt-3">
           <thead>
             <tr>
               <th colspan="2">Spécificités</th>
