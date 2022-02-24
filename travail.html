@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Travail effectué</title>
+</head>
+
+<body class="dark-mode">
+    <style>
+        .dark-mode {
+            background-color: rgb(24, 26, 27);
+            color: rgb(177, 176, 176);
+        }
+
+        .dark-text {
+            color: rgb(177, 176, 176);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Menu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./index.html">Cahier des charges fonctionnel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./capteurs.html">Cahier des charges technique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./travail.html">Travail effectué</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-sm">
+        <h1 class="display-2 fw-bold">Travaux</h1>
+
+        <div class="container-sm">
+            <h2 class="display-5">Travail effectué</h2>
+            <p>
+                L’attendu de ce projet était la mise en place d’un groupe de capteurs récoltant de manière autonome 
+                et de façon régulière des données d’ambiance sur une salle (température, humidité, taux de CO2…) 
+                qui seront transmise à un autre dispositif chargé de les traiter et de les afficher de façon claire 
+                pour un humain. Une application avait été envisagée initialement mais en l'absence de demande expresse du client, 
+                elle n’a pas été développée 
+                A été réalisé : l’environnement complet de collecte des données (tous les capteurs sont fonctionnels), 
+                la transmission des données collectées par la technologie LoRaWAN, la réception des données par LoRaWAN 
+                et le traitement de ses dernières, l’affichage (lisible par un humain) des différentes données collectées 
+                sur un écran OLED intégré au microcontrôleur ainsi que le transfert de ses 
+                données vers les serveurs ThingSpeak afin de les sauvegarder.
+
+            </p>
+            <h2 class="display-5">Problèmes rencontrés</h2>
+            <p>
+                L’attendu de ce projet était la mise en place d’un groupe de capteurs récoltant de manière autonome 
+                et de façon régulière des données d’ambiance sur une salle (température, humidité, taux de CO2…) 
+                qui seront transmise à un autre dispositif chargé de les traiter et de les afficher de façon claire 
+                pour un humain. Une application avait été envisagée initialement mais en l'absence de demande expresse du client, 
+                elle n’a pas été développée 
+                A été réalisé : l’environnement complet de collecte des données (tous les capteurs sont fonctionnels), 
+                la transmission des données collectées par la technologie LoRaWAN, la réception des données par LoRaWAN 
+                et le traitement de ses dernières, l’affichage (lisible par un humain) des différentes données collectées 
+                sur un écran OLED intégré au microcontrôleur ainsi que le transfert de ses 
+                données vers les serveurs ThingSpeak afin de les sauvegarder.
+                <br><br>
+                Les librairies nécessaires au fonctionnement des différents composants du capteur n’étaient pas forcément 
+                toutes à jour, rendant leur compatibilité avec le reste des composants difficile. 
+                En général, les librairies étaient très fournies en exemples près à l’emploi, cependant tous les capteurs 
+                n’en possédaient pas, il a alors fallu rechercher sur Internet, chose parfois complexe, au vu du fait que 
+                certains capteurs ne sont que peu utilisés et n’ont donc pas beaucoup de documentation.
+                <br><br>
+                Concernant l’affichage des données, la librairie officielle d’Heltec, les créateurs de cet ESP et de l’écran OLED intégré,
+                avait été choisie, du fait d’être théoriquement entièrement compatible avec l’ESP. 
+                Il a, en revanche, été remarqué que cette librairie fonctionnait très mal avec le reste du programme, 
+                causant des problèmes d’affichage conséquents sur l’écran voire son arrêt total, nous en avons donc changé. 
+                <br>
+                Les problèmes ne s’arrêtent cependant pas là, en effet, l’écran a été très complexe à faire fonctionner correctement. 
+                Que ce soit au niveau de l’affichage des données ou du rafraîchissement de l’écran, 
+                il a fallu beaucoup de temps et de tentatives pour obtenir un rendu correct et facile à lire.
+
+
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
