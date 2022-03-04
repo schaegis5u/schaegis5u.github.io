@@ -47,6 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="./travail.html">Travail effectué</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./ccl.html">Conclusion & Sitographie</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -79,6 +82,7 @@
             </p>
             <p>
                 Le deuxième bloc est le bloc dit de réception, constitué d’un unique ESP32 : 
+                <br>
                 <img src="./images//2-1.jpg" width="500px" alt="">
             </p>
             <p>
@@ -101,6 +105,7 @@
                 Les données ne sont pas transmises par le biais d’un câble ou par WiFi car cela nuirait à l’objectif de notre projet qui est de pouvoir récolter les informations d’ambiance de plusieurs salles sans pour autant être dans ou proche de ladite salle. C’est pourquoi nous utilisons la technologie LoRaWAN, un protocole de communication radio sur de longues distances entre deux appareils. Grâce à cette technologie, il nous est possible très facilement d’envoyer des données à un autre appareil simplement en connaissant la bande passante utilisée par LoRa dans le continent. Dans le cas de l’Europe, il s’agit de 866E6. La portée de cet échange est très grande, permettant dans des conditions idéales, de se connecter à un appareil situé à plusieurs dizaines de kilomètres, très pratique dans notre cas, car nous voulons pouvoir être capable de recevoir des données d’un capteur situé à l’autre bout de la ville.
                 <br><br>
                 Pour conclure sur ce bloc, ce dernier renvoie des données, par le biais de Serial.print à des fins de débug. Ces données comprennent les capteurs ainsi que leur version (pour s’assurer que tout fonctionne) ainsi que les résultats des mesures :
+                <br>
                 <img src="images/3_1.png" width="500px" alt="">
                 <br>
                 On remarquera que l’on voit beaucoup de fois le capteur de son, ce qui est normal puisqu’il mesure très souvent. Une fois toutes les données affichées, lorsque l’ESP les envoie, il affiche une dernière fois les données compilées avant de rentrer en sommeil.
@@ -116,38 +121,56 @@
                 Une fois les données stockées, le programme est séparé en deux, nos deux blocs restants. Le plus rapide à s’exécuter est le bloc d’affichage ; ce dernier va reprendre les variables stockées précédemment et les afficher, avec quelques modifications pour les rendre facilement compréhensible pour un humain, sur un écran OLED intégré. Ce dernier nous a d’ailleurs causé de nombreux problèmes, qui seront détaillés plus bas. Une fois les données affichées, comme on peut le voir ci-dessous, la tâche et par conséquent le rôle du bloc d’affichage est terminé.
                 <br><br>
                 Comme pour le bloc précédent, on retrouve des messages pour le débug dans le moniteur série. Ces derniers sont beaucoup moins nombreux mais permettent de s’assurer que les données reçues sont correctes et que ThingSpeak a bien reçu les données :
+                <br>
                 <img src="./images/4-1.jpg" width="500px" alt="">
+                <br>
                 <img src="./images/4-2.png" width="600px" alt="">
+            </p>
+                <h4 class="display-7">Bloc de stockage des données</h4> 
+            <p>
+                Nous arrivons désormais au dernier bloc, le bloc de stockage, chargé de mettre en ligne les données sur le site gratuit ThingSpeak afin d’y avoir accès plus tard ou pour mettre en évidence les variations de données (comme la température, par exemple).
+                <br>
+                Il s’agit du bloc le plus simple, dans son fonctionnement, parmis les 3 :
+                <br><br>
+                Dans un premier temps, le bloc va se connecter au WiFi, défini au préalable au début du code, puis va assigner à chacune des valeurs un champ de ThingSpeak (les champs étant simplement des graphiques affichant les différentes données à un temps donné) avant de les envoyer sur le canal défini lui aussi au préalable à l’aide d’identifiants de connexion, notamment une clé d’API. Une fois cet envoi effectué, la tâche est terminée.
+                <br><br>
+                Si l’on se rend sur ThingSpeak, dans le canal adapté, on peut effectivement y voir les données récoltées :
+                <br>
+                <img src="./images/TP.png" width="500px" alt="">
+                <br>
+                Comme expliqué, chaque graphique correspond à une donnée (lisible sur le côté gauche du graphique). On remarquera que certaines données ne changent pas ou très peu, comme la pression ou le CO2, mais c’est normal. Les graphiques affichent des données très rapprochées pour éviter de les rendre illisibles, mais il est possible de paramétrer en profondeur l’affichage afin d’afficher les données sur plusieurs jours en même temps.
+                <br>
+                Cela ne s’arrête cependant pas là, puisque l’ESP va vérifier que les tâches sont terminées (en utilisant simplement deux booléens qui passent à True juste avant que la tâche ne se supprime) et le cas échéant, va se bloquer pendant une trentaine de secondes pour que l’on puisse lire les données à l’écran avant de redémarrer et de recommencer, créant effectivement une boucle.
             </p>
             <h2 class="display-5">Problèmes rencontrés</h2>
             <p>
-                L’attendu de ce projet était la mise en place d’un groupe de capteurs récoltant de manière autonome 
-                et de façon régulière des données d’ambiance sur une salle (température, humidité, taux de CO2…) 
-                qui seront transmise à un autre dispositif chargé de les traiter et de les afficher de façon claire 
-                pour un humain. Une application avait été envisagée initialement mais en l'absence de demande expresse du client, 
-                elle n’a pas été développée 
-                A été réalisé : l’environnement complet de collecte des données (tous les capteurs sont fonctionnels), 
-                la transmission des données collectées par la technologie LoRaWAN, la réception des données par LoRaWAN 
-                et le traitement de ses dernières, l’affichage (lisible par un humain) des différentes données collectées 
-                sur un écran OLED intégré au microcontrôleur ainsi que le transfert de ses 
-                données vers les serveurs ThingSpeak afin de les sauvegarder.
+                Dans tous les projets, il y a forcément des parties qui ont causé problème, des erreurs à résoudre, des choses à modifier car elles ne fonctionnent pas comme prévu, etc. Et notre projet n’est pas différent de ce point de vue là.
                 <br><br>
-                Les librairies nécessaires au fonctionnement des différents composants du capteur n’étaient pas forcément 
-                toutes à jour, rendant leur compatibilité avec le reste des composants difficile. 
-                En général, les librairies étaient très fournies en exemples près à l’emploi, cependant tous les capteurs 
-                n’en possédaient pas, il a alors fallu rechercher sur Internet, chose parfois complexe, au vu du fait que 
-                certains capteurs ne sont que peu utilisés et n’ont donc pas beaucoup de documentation.
+                En effet, nous avons rencontré, durant notre travail, un certains nombre de problèmes, principalement au niveau des librairies et surtout des librairies concernant le fonctionnement de l’écran OLED intégré aux microcontrôleurs ESP32
                 <br><br>
-                Concernant l’affichage des données, la librairie officielle d’Heltec, les créateurs de cet ESP et de l’écran OLED intégré,
-                avait été choisie, du fait d’être théoriquement entièrement compatible avec l’ESP. 
-                Il a, en revanche, été remarqué que cette librairie fonctionnait très mal avec le reste du programme, 
-                causant des problèmes d’affichage conséquents sur l’écran voire son arrêt total, nous en avons donc changé. 
-                <br>
-                Les problèmes ne s’arrêtent cependant pas là, en effet, l’écran a été très complexe à faire fonctionner correctement. 
-                Que ce soit au niveau de l’affichage des données ou du rafraîchissement de l’écran, 
-                il a fallu beaucoup de temps et de tentatives pour obtenir un rendu correct et facile à lire.
-
-
+                Les librairies nécessaires au fonctionnement des différents composants du capteur n’étaient pas forcément toutes à jour, rendant leur compatibilité avec le reste des composants difficile. En général, les librairies étaient très fournies en exemples près à l’emploi, cependant tous les capteurs n’en possédaient pas, il a alors fallu rechercher sur Internet, chose parfois complexe, au vu du fait que certains capteurs ne sont que peu utilisés et n’ont donc pas beaucoup de documentation. 
+                <br><br>
+                Concernant l’affichage des données, la librairie officielle d’Heltec, les créateurs de cet ESP et de l’écran OLED intégré, avait été choisie, du fait d’être théoriquement entièrement compatible avec l’ESP. Il a, en revanche, été remarqué que cette librairie fonctionnait très mal avec le reste du programme, causant des problèmes d’affichage conséquents sur l’écran voire son arrêt total, nous en avons donc changé.
+                <br><br>
+                Les problèmes ne s’arrêtent cependant pas là, en effet, l’écran a été très complexe à faire fonctionner correctement. Que ce soit au niveau de l’affichage des données ou du rafraîchissement de l’écran, il a fallu beaucoup de temps et de tentatives pour obtenir un rendu correct et facile à lire. Le plus gros du problème réside dans le fait que l’écran a beaucoup de difficultés à afficher correctement et entièrement le texte donné. Il nous a été alors obligé de contourner le problème et d’utiliser des méthodes assez peu conventionnelles pour que le programme fonctionne. Un exemple serait qu’il nous a fallu espacer chaque écriture sur l’écran d’un appel vide, sans quoi la moitié du texte ne s'affiche pas.
+                <br><br>
+                Autrement, les capteurs fonctionnent étonnamment bien ensemble. C’était, en effet, notre principale crainte concernant ce projet. Nous pensions avoir beaucoup de mal à faire cohabiter les capteurs, puisque chacun d'entre eux utilise une librairie différente et nécessite des étapes d’allumage différentes elles aussi. L’exemple le plus évident reste le capteur de CO2. Ce dernier nécessite un temps de “chauffe” d’une dizaine de secondes avant de commencer à fournir des données. Ce temps de latence a posé problème puisqu’il a fallu axer tout le code de récolte de données autour de ce capteur : nous avons dû forcer le programme à attendre qu’une valeur du capteur soit transmise avant de procéder à l’envoi des données, résultant en une attente d’environ 15 secondes entre l’allumage de l’ESP et l’envoi effectif des données au receveur.
+                <br><br>
+                Un autre problème, plus mineur, vient des câbles, très nombreux au vu du fait qu’un grand nombre de capteurs soient branchés, qui viennent s’entremêler les uns aux autres et se débranchent très facilement si on les bouge trop, causant à moultes reprises des erreurs dues aux capteurs débranchés.
+            </p>
+            <h2 class="display-5">Ce qui pourrait être amélioré</h2>
+            <p>
+                Bien que nous ayons eu une quantité suffisante de temps, il y a toujours des améliorations que nous aurions voulu implémenter mais pour lesquelles nous avons manqué de connaissances ou que nous avons simplement mis de côté pour nous concentrer sur l’essentiel.
+                <br><br>
+                Parmi ces ajouts, on retrouve l’implémentation d’un réveil de l’ESP en cas de mouvement ou de bruit détecté en plus du réveil habituel au bout de 30 secondes. Cela nous aurait demandé trop de temps et nous ne pensions pas être capable de le réaliser, cela a donc été mis de côté, mais permettrait de capturer avec plus de précision les données. Cependant, il faudrait changer le matériel, les capteurs de son et de mouvement étant de piètre qualité et ne fournissant pas des mesures digne de ce nom.
+                <br><br>
+                Également, bien que ce ne fasse pas vraiment partie des qualifications d’un développeur, il serait intéressant de créer une boîte pour l’ESP et ses capteurs qui permettrait de cacher les fils et rendre l’objet plus esthétique en plus de sécuriser les fils qui ne pourront plus se détacher.
+                <br><br>
+                Un ajout important au projet, qui avait été envisagé au début, serait la mise en place d’une application mobile permettant l’affichage de chaque bloc de capteurs et leurs mesures afin de centraliser les données. Ce rôle est déjà majoritairement rempli par ThingSpeak, mais ce serait l’occasion de pousser l’idée encore plus loin en y ajoutant la possibilité de modifier certains paramètres ou de contrôler les ESP à distance.
+            </p>
+            <h2 class="display-5">Ce que nous avons appris</h2>
+            <p>
+                Réaliser ce projet, de la définition des objectifs à la réalisation, nous aura certainement apporté un certain nombres de compétences, parmis lesquelles on peut retrouver des compétences de rédaction pour tout ce qui concerne l’écriture du cahier des charges, de réflexion pour trouver la meilleure solution, ou plus simplement des compétences liées au développement en lui-même, que ce soit en Arduino, pour le code ou en matière de montage électrique, qui a bien été exploité au vu du grand nombre de capteurs qu’il a fallu rechercher et monter.
             </p>
         </div>
     </div>
