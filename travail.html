@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Travail effectué</title>
+    <title>Résultats</title>
 </head>
 
 <body class="dark-mode">
@@ -53,22 +53,71 @@
     </nav>
 
     <div class="container-sm">
-        <h1 class="display-2 fw-bold">Travaux</h1>
+        <h1 class="display-2 fw-bold">Résultats</h1>
 
         <div class="container-sm">
             <h2 class="display-5">Travail effectué</h2>
+                <h3 class="display-6">Recherches</h3>
             <p>
-                L’attendu de ce projet était la mise en place d’un groupe de capteurs récoltant de manière autonome 
-                et de façon régulière des données d’ambiance sur une salle (température, humidité, taux de CO2…) 
-                qui seront transmise à un autre dispositif chargé de les traiter et de les afficher de façon claire 
-                pour un humain. Une application avait été envisagée initialement mais en l'absence de demande expresse du client, 
-                elle n’a pas été développée 
-                A été réalisé : l’environnement complet de collecte des données (tous les capteurs sont fonctionnels), 
-                la transmission des données collectées par la technologie LoRaWAN, la réception des données par LoRaWAN 
-                et le traitement de ses dernières, l’affichage (lisible par un humain) des différentes données collectées 
-                sur un écran OLED intégré au microcontrôleur ainsi que le transfert de ses 
-                données vers les serveurs ThingSpeak afin de les sauvegarder.
+                Dans un premier temps, avant même de commencer à brancher le moindre fil, nous avons réalisé et organisé des recherches sur les différents capteurs à notre disposition afin de s’assurer qu’ils fournissent bien les données voulues et afin de récolter des informations sur eux, sur comment les brancher ou les utiliser.
+                <br/>
+                Cette recherche n’aura pas toujours été des plus faciles, certains capteurs étant assez méconnus, mais nous avons réussi à établir un tableau (voir partie Technologies retenues) assez complet pour chacun d’entre eux.
 
+            </p>
+            <h3 class="display-6">Mise en place du projet</h3>
+            <p>
+                Dans un second temps, après que toutes nos recherches soient complètes, nous nous sommes attaqués à la partie principale de ce projet.
+                <br>
+                L’attendu de ce projet était la mise en place d’un groupe de capteurs récoltant de manière autonome et de façon régulière des données d’ambiance sur une salle (température, humidité, taux de CO2…) qui seront transmise à un autre dispositif chargé de les traiter et de les afficher de façon claire pour un humain. Une application avait été envisagée initialement mais en l'absence de demande expresse du client, elle n’a pas été développée 
+                <br>
+                Globalement, le projet est complété. Améliorable, ce que nous traiterons dans une partie à suivre, mais fonctionnel. Ce dernier consiste en plusieurs blocs : 
+                <br>
+                <img src="./images/1_1.jpg" width="500px" alt="">
+                <img src="./images//1_2.jpg" width="500px" alt="">
+                <img src="./images//1_3.jpg" width="500px" alt="">
+                <img src="./images//1_4.jpg" width="500px" alt="">
+            </p>
+            <p>
+                Le deuxième bloc est le bloc dit de réception, constitué d’un unique ESP32 : 
+                <img src="./images//2-1.jpg" width="500px" alt="">
+            </p>
+            <p>
+                Enfin, le troisième bloc n’est pas physique, il s’agit de ThingSpeak ou, plus précisément, d’un canal ThingSpeak, dans lequel toutes les données collectées y sont stockées.
+                <br>
+                Ces trois blocs fonctionnent majoritairement ensemble et composent le projet en lui-même. Le bloc de collecte est indépendant des autres, dans le sens où ce dernier collectera et enverra des données de façon régulière sans s'inquiéter de l’état des 2 autres tandis que les blocs de réception et de stockage, eux, ont besoin du premier bloc pour fonctionner correctement et l’un ne peut fonctionner sans l’autre. En effet, dû au fait que les deux blocs s’exécutent en même temps sur un seul ESP, l’ESP attendra que les deux blocs aient fini leurs processus pour se relancer et récupérer de nouvelles données.
+            </p>
+                <h4 class="display-7">Bloc de collecte des données</h4> 
+            <p>
+                Rentrons un peu dans les détails, désormais. Le bloc de collecte fonctionne autour d’une boucle ; Une fois le setup passé, qui consiste tout simplement en l’allumage de tous les capteurs, sans autre action particulière (les capteurs sont initialisés et lancés, l’écran est allumé, le mode veille est paramétré), c’est le moment pour la boucle de se démarrer. Cette boucle consiste en 3 blocs : le bloc du capteur de son, le bloc du capteur de mouvement et le bloc des autres capteurs. La raison de cette séparation vient du nombre de mesures nécessaires pour chaque capteur. Le capteur de son, afin de fournir une valeur, doit réaliser plusieurs mesures à intervalle régulier, ce qui fait qu’il est impossible de le faire fonctionner en même temps que celui capturant les mouvements, ce dernier nécessitant plusieurs mesures mais en bien moins grande quantité.
+                <br>
+                Enfin, les capteurs restants, comme le capteur de température ou de pression, n’ont besoin que d’une seule mesure, c’est donc pourquoi ils sont intégrés au bloc du capteur de CO2, qui lui nécessite un temps de chauffe pour fournir une seule mesure et, en plus de ça, nécessite des valeurs de température et d’humidité.
+                <br>
+                La boucle va donc tout simplement démarrer un timer et passer dans tous les blocs à répétition jusqu’à ce que toutes les mesures d’ambiance aient été récoltées. A partir de ce moment-là, la boucle s’arrête car l’ESP va envoyer ses données au deuxième ESP et se mettre en veille, mettant terme au fonctionnement du premier bloc et démarrant le fonctionnement des deux autres. Le message envoyé ressemble à ceci : 
+                <br><br>
+                <i>lux:temp:pression:temp:humidité:CO2:TVOC:présence:présence</i>
+                <br><br>
+                Où chaque paramètre est une valeur décimale, sauf pour la présence, qui renvoie un booléen.
+                <br><br>
+                Les données ne sont pas transmises par le biais d’un câble ou par WiFi car cela nuirait à l’objectif de notre projet qui est de pouvoir récolter les informations d’ambiance de plusieurs salles sans pour autant être dans ou proche de ladite salle. C’est pourquoi nous utilisons la technologie LoRaWAN, un protocole de communication radio sur de longues distances entre deux appareils. Grâce à cette technologie, il nous est possible très facilement d’envoyer des données à un autre appareil simplement en connaissant la bande passante utilisée par LoRa dans le continent. Dans le cas de l’Europe, il s’agit de 866E6. La portée de cet échange est très grande, permettant dans des conditions idéales, de se connecter à un appareil situé à plusieurs dizaines de kilomètres, très pratique dans notre cas, car nous voulons pouvoir être capable de recevoir des données d’un capteur situé à l’autre bout de la ville.
+                <br><br>
+                Pour conclure sur ce bloc, ce dernier renvoie des données, par le biais de Serial.print à des fins de débug. Ces données comprennent les capteurs ainsi que leur version (pour s’assurer que tout fonctionne) ainsi que les résultats des mesures :
+                <img src="images/3_1.png" width="500px" alt="">
+                <br>
+                On remarquera que l’on voit beaucoup de fois le capteur de son, ce qui est normal puisqu’il mesure très souvent. Une fois toutes les données affichées, lorsque l’ESP les envoie, il affiche une dernière fois les données compilées avant de rentrer en sommeil.
+            </p>
+                <h4 class="display-7">Bloc de réception et d'affichage des données</h4> 
+            <p>
+                Une fois les données envoyées, c’est au tour du deuxième bloc de jouer : 
+                <br><br>
+                Ce dernier va, dans un premier temps, qu’il y ait ou non une transmission, initialiser un certain nombre de choses. Tout d’abord, il va initialiser, comme sa paire, la bonne bande passante LoRaWAN, puis préparer la connexion WiFi et ThingSpeak ainsi l’écran OLED, pour qu’il soit disponible à tout moment pour afficher les données reçues. Une fois fait, il entre dans une boucle infinie dans laquelle il va rechercher des transmissions LoRa. Ce fonctionnement n’est pas économe en énergie, c’est pourquoi il n’est pas possible, pour cet ESP, d’être sur batterie, il devra fonctionner constamment sur secteur.
+                <br><br>
+                Une fois la transmission reçue, l’ESP va décomposer le message vu précédemment en autant de variables qu’il y a de données. Pour ce faire, il utilise une simple fonction qui sépare une chaîne en fonction d’un diviseur, dans notre cas “:”.
+                <br><br>
+                Une fois les données stockées, le programme est séparé en deux, nos deux blocs restants. Le plus rapide à s’exécuter est le bloc d’affichage ; ce dernier va reprendre les variables stockées précédemment et les afficher, avec quelques modifications pour les rendre facilement compréhensible pour un humain, sur un écran OLED intégré. Ce dernier nous a d’ailleurs causé de nombreux problèmes, qui seront détaillés plus bas. Une fois les données affichées, comme on peut le voir ci-dessous, la tâche et par conséquent le rôle du bloc d’affichage est terminé.
+                <br><br>
+                Comme pour le bloc précédent, on retrouve des messages pour le débug dans le moniteur série. Ces derniers sont beaucoup moins nombreux mais permettent de s’assurer que les données reçues sont correctes et que ThingSpeak a bien reçu les données :
+                <img src="./images/4-1.jpg" width="500px" alt="">
+                <img src="./images/4-2.png" width="600px" alt="">
             </p>
             <h2 class="display-5">Problèmes rencontrés</h2>
             <p>
